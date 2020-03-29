@@ -37,6 +37,8 @@
     COMMA = ','
     TRUE = 'true'
     FALSE = 'false'
+    QMARK = '?'
+    PIPE = '|'
   ]
 
   psiImplUtilClass = "name.kropp.intellij.qml.psi.QmlPsiImplUtil"
@@ -72,7 +74,7 @@ method_attribute ::= 'function' method '(' (parameter ',')* parameter? ')' metho
 method_call ::= method '(' (argument ',')* argument? ')'
 
 method_body ::= '{' javascript '}'
-javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|string|identifier|number|value)*
+javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|'?'|'|'|string|identifier|number|value)*
 
 list ::= '[' item? (',' item)* ']'
 

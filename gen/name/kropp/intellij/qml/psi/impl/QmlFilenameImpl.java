@@ -26,6 +26,7 @@ public class QmlFilenameImpl extends QmlFilenameMixin implements QmlFilename {
     else super.accept(visitor);
   }
 
+  @Override
   @NotNull
   public QmlFilename updateText(@NotNull String newText) {
     return QmlPsiImplUtil.updateText(this, newText);

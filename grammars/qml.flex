@@ -35,7 +35,7 @@ SQ_STRING="\'"[^\']*"\'"
 %%
 
 <PROPERTYVALUE> {
-  [a-zA-Z0-9\t\.\+\/\*\&\!\?\:\=\-\>\<]+   { return VALUE; }
+  [a-zA-Z0-9\t\.\+\/\*\&\!\?\:\=\-\>\<\(\)]+   { return VALUE; }
 }
 
 {END_OF_LINE_COMMENT}  { return LINE_COMMENT; }
@@ -48,7 +48,7 @@ SQ_STRING="\'"[^\']*"\'"
 "true"                 { return TRUE; }
 "false"                { return FALSE; }
 "default"              { return KEYWORD_DEFAULT; }
-"property"             { return KEYWORD_PROPERTY; }
+//"property"             { return KEYWORD_PROPERTY; }
 "var"                  { return KEYWORD_VAR; }
 "readonly"             { return KEYWORD_READONLY; }
 "signal"               { return KEYWORD_SIGNAL; }
@@ -66,12 +66,14 @@ SQ_STRING="\'"[^\']*"\'"
 ":"                    { yybegin(PROPERTYVALUE); return COLON; }
 ";"                    { return SEMICOLON; }
 ","                    { return COMMA; }
+"\?"                   { return QMARK; }
+"\|"                   { return PIPE; }
 [0-9]+"."[0-9]+        { return FLOAT; }
 [0-9]+                 { return INTEGER; }
 [a-zA-Z0-9\.]+         { return IDENTIFIER; }
 {STRING}               { return STRING; }
 {SQ_STRING}            { return STRING; }
-[a-zA-Z0-9\.\+\/\*\&\!\=\-\>\<]+   { return VALUE; }
+[a-zA-Z0-9\.\+\/\*\&\!\=\-\>\<\(\)]+   { return VALUE; }
 
 
 [^] { return BAD_CHARACTER; }

@@ -58,6 +58,8 @@ public interface QmlTypes {
   IElementType LBRACE = new QmlTokenType("{");
   IElementType LBRACKET = new QmlTokenType("[");
   IElementType LPAREN = new QmlTokenType("(");
+  IElementType PIPE = new QmlTokenType("|");
+  IElementType QMARK = new QmlTokenType("?");
   IElementType RBRACE = new QmlTokenType("}");
   IElementType RBRACKET = new QmlTokenType("]");
   IElementType RPAREN = new QmlTokenType(")");
@@ -69,7 +71,7 @@ public interface QmlTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-       if (type == ARGUMENT) {
+      if (type == ARGUMENT) {
         return new QmlArgumentImpl(node);
       }
       else if (type == ATTRIBUTE) {
