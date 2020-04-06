@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>name.kropp.intellij.qml</id>
     <name>QML support</name>
-    <version>0.3.3</version>
+    <version>0.3.3w</version>
     <vendor email="victor.kropp@gmail.com" url="https://victor.kropp.name/projects/intellij-qml/">Victor Kropp</vendor>
 
     <description><![CDATA[

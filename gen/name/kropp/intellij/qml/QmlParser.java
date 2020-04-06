@@ -288,7 +288,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|'?'|'|'|string|identifier|number|value)*
+  // ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|'?'|'|'|string|identifier|number|value|boolean)*
   public static boolean javascript(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "javascript")) return false;
     Marker m = enter_section_(b, l, _COLLAPSE_, JAVASCRIPT, "<javascript>");
@@ -301,7 +301,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // '{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|'?'|'|'|string|identifier|number|value
+  // '{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|'?'|'|'|string|identifier|number|value|boolean
   private static boolean javascript_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "javascript_0")) return false;
     boolean r;
@@ -321,6 +321,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, IDENTIFIER);
     if (!r) r = number(b, l + 1);
     if (!r) r = consumeToken(b, VALUE);
+    if (!r) r = boolean_$(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
